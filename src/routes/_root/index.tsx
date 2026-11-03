@@ -6,7 +6,7 @@ function Home() {
 	return (
 		<>
 			<h1 className="text-4xl font-bold">Welcome to TanStack Start</h1>
-			<p className="mt-4 text-lg">
+			<p className="mt-4 text-lg h-256">
 				Edit <code>src/routes/index.tsx</code> to get started.
 			</p>
 		</>

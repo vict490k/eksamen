@@ -16,7 +16,7 @@ import { Route as RootFaqRouteImport } from './routes/_root/faq'
 import { Route as RootKontaktRouteImport } from './routes/_root/kontakt'
 import { Route as RootNyhederRouteImport } from './routes/_root/nyheder'
 import { Route as RootOmosRouteImport } from './routes/_root/omos'
-import { Route as RootServiceRouteImport } from './routes/_root/service'
+import { Route as RootServicesRouteImport } from './routes/_root/services'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 
 const RootRouteRoute = RootRouteRouteImport.update({
@@ -53,9 +53,9 @@ const RootOmosRoute = RootOmosRouteImport.update({
   path: '/omos',
   getParentRoute: () => RootRouteRoute,
 } as any)
-const RootServiceRoute = RootServiceRouteImport.update({
-  id: '/service',
-  path: '/service',
+const RootServicesRoute = RootServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => RootRouteRoute,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -71,7 +71,7 @@ export interface FileRoutesByFullPath {
   '/kontakt': typeof RootKontaktRoute
   '/nyheder': typeof RootNyhederRoute
   '/omos': typeof RootOmosRoute
-  '/service': typeof RootServiceRoute
+  '/services': typeof RootServicesRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -79,7 +79,7 @@ export interface FileRoutesByTo {
   '/kontakt': typeof RootKontaktRoute
   '/nyheder': typeof RootNyhederRoute
   '/omos': typeof RootOmosRoute
-  '/service': typeof RootServiceRoute
+  '/services': typeof RootServicesRoute
   '/': typeof RootIndexRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -91,7 +91,7 @@ export interface FileRoutesById {
   '/_root/kontakt': typeof RootKontaktRoute
   '/_root/nyheder': typeof RootNyhederRoute
   '/_root/omos': typeof RootOmosRoute
-  '/_root/service': typeof RootServiceRoute
+  '/_root/services': typeof RootServicesRoute
   '/_root/': typeof RootIndexRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -104,10 +104,10 @@ export interface FileRouteTypes {
     | '/kontakt'
     | '/nyheder'
     | '/omos'
-    | '/service'
+    | '/services'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/faq' | '/kontakt' | '/nyheder' | '/omos' | '/service' | '/' | '/admin'
+  to: '/faq' | '/kontakt' | '/nyheder' | '/omos' | '/services' | '/' | '/admin'
   id:
     | '__root__'
     | '/_root'
@@ -116,7 +116,7 @@ export interface FileRouteTypes {
     | '/_root/kontakt'
     | '/_root/nyheder'
     | '/_root/omos'
-    | '/_root/service'
+    | '/_root/services'
     | '/_root/'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -177,11 +177,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RootOmosRouteImport
       parentRoute: typeof RootRouteRoute
     }
-    '/_root/service': {
-      id: '/_root/service'
-      path: '/service'
-      fullPath: '/service'
-      preLoaderRoute: typeof RootServiceRouteImport
+    '/_root/services': {
+      id: '/_root/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof RootServicesRouteImport
       parentRoute: typeof RootRouteRoute
     }
     '/admin/': {
@@ -199,7 +199,7 @@ interface RootRouteRouteChildren {
   RootKontaktRoute: typeof RootKontaktRoute
   RootNyhederRoute: typeof RootNyhederRoute
   RootOmosRoute: typeof RootOmosRoute
-  RootServiceRoute: typeof RootServiceRoute
+  RootServicesRoute: typeof RootServicesRoute
   RootIndexRoute: typeof RootIndexRoute
 }
 
@@ -208,7 +208,7 @@ const RootRouteRouteChildren: RootRouteRouteChildren = {
   RootKontaktRoute: RootKontaktRoute,
   RootNyhederRoute: RootNyhederRoute,
   RootOmosRoute: RootOmosRoute,
-  RootServiceRoute: RootServiceRoute,
+  RootServicesRoute: RootServicesRoute,
   RootIndexRoute: RootIndexRoute,
 }
 
