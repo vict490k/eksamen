@@ -12,6 +12,11 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as RootRouteRouteImport } from './routes/_root/route'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as RootIndexRouteImport } from './routes/_root/index'
+import { Route as RootFaqRouteImport } from './routes/_root/faq'
+import { Route as RootKontaktRouteImport } from './routes/_root/kontakt'
+import { Route as RootNyhederRouteImport } from './routes/_root/nyheder'
+import { Route as RootOmosRouteImport } from './routes/_root/omos'
+import { Route as RootServiceRouteImport } from './routes/_root/service'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 
 const RootRouteRoute = RootRouteRouteImport.update({
@@ -28,6 +33,31 @@ const RootIndexRoute = RootIndexRouteImport.update({
   path: '/',
   getParentRoute: () => RootRouteRoute,
 } as any)
+const RootFaqRoute = RootFaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => RootRouteRoute,
+} as any)
+const RootKontaktRoute = RootKontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => RootRouteRoute,
+} as any)
+const RootNyhederRoute = RootNyhederRouteImport.update({
+  id: '/nyheder',
+  path: '/nyheder',
+  getParentRoute: () => RootRouteRoute,
+} as any)
+const RootOmosRoute = RootOmosRouteImport.update({
+  id: '/omos',
+  path: '/omos',
+  getParentRoute: () => RootRouteRoute,
+} as any)
+const RootServiceRoute = RootServiceRouteImport.update({
+  id: '/service',
+  path: '/service',
+  getParentRoute: () => RootRouteRoute,
+} as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,9 +67,19 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof RootIndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
+  '/faq': typeof RootFaqRoute
+  '/kontakt': typeof RootKontaktRoute
+  '/nyheder': typeof RootNyhederRoute
+  '/omos': typeof RootOmosRoute
+  '/service': typeof RootServiceRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
+  '/faq': typeof RootFaqRoute
+  '/kontakt': typeof RootKontaktRoute
+  '/nyheder': typeof RootNyhederRoute
+  '/omos': typeof RootOmosRoute
+  '/service': typeof RootServiceRoute
   '/': typeof RootIndexRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -47,15 +87,38 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_root': typeof RootRouteRouteWithChildren
   '/admin': typeof AdminRouteRouteWithChildren
+  '/_root/faq': typeof RootFaqRoute
+  '/_root/kontakt': typeof RootKontaktRoute
+  '/_root/nyheder': typeof RootNyhederRoute
+  '/_root/omos': typeof RootOmosRoute
+  '/_root/service': typeof RootServiceRoute
   '/_root/': typeof RootIndexRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/admin' | '/admin/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/faq'
+    | '/kontakt'
+    | '/nyheder'
+    | '/omos'
+    | '/service'
+    | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/admin'
-  id: '__root__' | '/_root' | '/admin' | '/_root/' | '/admin/'
+  to: '/faq' | '/kontakt' | '/nyheder' | '/omos' | '/service' | '/' | '/admin'
+  id:
+    | '__root__'
+    | '/_root'
+    | '/admin'
+    | '/_root/faq'
+    | '/_root/kontakt'
+    | '/_root/nyheder'
+    | '/_root/omos'
+    | '/_root/service'
+    | '/_root/'
+    | '/admin/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -86,6 +149,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RootIndexRouteImport
       parentRoute: typeof RootRouteRoute
     }
+    '/_root/faq': {
+      id: '/_root/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof RootFaqRouteImport
+      parentRoute: typeof RootRouteRoute
+    }
+    '/_root/kontakt': {
+      id: '/_root/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof RootKontaktRouteImport
+      parentRoute: typeof RootRouteRoute
+    }
+    '/_root/nyheder': {
+      id: '/_root/nyheder'
+      path: '/nyheder'
+      fullPath: '/nyheder'
+      preLoaderRoute: typeof RootNyhederRouteImport
+      parentRoute: typeof RootRouteRoute
+    }
+    '/_root/omos': {
+      id: '/_root/omos'
+      path: '/omos'
+      fullPath: '/omos'
+      preLoaderRoute: typeof RootOmosRouteImport
+      parentRoute: typeof RootRouteRoute
+    }
+    '/_root/service': {
+      id: '/_root/service'
+      path: '/service'
+      fullPath: '/service'
+      preLoaderRoute: typeof RootServiceRouteImport
+      parentRoute: typeof RootRouteRoute
+    }
     '/admin/': {
       id: '/admin/'
       path: '/'
@@ -97,10 +195,20 @@ declare module '@tanstack/react-router' {
 }
 
 interface RootRouteRouteChildren {
+  RootFaqRoute: typeof RootFaqRoute
+  RootKontaktRoute: typeof RootKontaktRoute
+  RootNyhederRoute: typeof RootNyhederRoute
+  RootOmosRoute: typeof RootOmosRoute
+  RootServiceRoute: typeof RootServiceRoute
   RootIndexRoute: typeof RootIndexRoute
 }
 
 const RootRouteRouteChildren: RootRouteRouteChildren = {
+  RootFaqRoute: RootFaqRoute,
+  RootKontaktRoute: RootKontaktRoute,
+  RootNyhederRoute: RootNyhederRoute,
+  RootOmosRoute: RootOmosRoute,
+  RootServiceRoute: RootServiceRoute,
   RootIndexRoute: RootIndexRoute,
 }
 
