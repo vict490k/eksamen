@@ -1,16 +1,8 @@
 @import "tailwindcss";
 @import "flaticon.css";
-
-@font-face {
-	font-family: "FontAwesome";
-	src: url("../fonts/FontAwesome.otf") format("opentype");
-	font-weight: normal;
-	font-style: normal;
-}
+@import "font-awesome.css";
 
 @theme {
-	--font-icons: "FontAwesome";
-	
 	--color-eerie-black: #222222ff;
 	--color-pumpkin: #ff6600ff;
 	--color-ucla-blue: #337ab7ff;
@@ -23,6 +15,7 @@
 	--color-seasalt: #f8f8faff;
 
 	--shadow-ctr: 0 0 12px rgba(0, 0, 0, 0.5);
+	--inset-shadow-b: inset 0 -8px 8px -8px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -39,3 +32,104 @@ body {
 	margin: 0;
 }
 
+.clipygon {
+	clip-path: polygon(0% 40%, 70% 55%, 100% 50%, 100% 100%, 0% 100%);
+}
+
+.gonyclip {
+	clip-path: polygon(0% 45%, 30% 55%, 100% 40%, 100% 100%, 0% 100%);
+}
+
+.bookmark {
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 90%, 0% 100%);
+}
+
+@media screen and (min-width: 400px) {
+	.prevCard {
+		left: -50%;
+		opacity: 0;
+	}
+	
+	.leftCard {
+		left: 0%;
+		opacity: 0;
+	}
+	
+	.centreCard {
+		left: 50%;
+		transform: translateX(-50%);
+		
+	}
+	
+	.rightCard {
+		left: 100%;
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	
+	.nextCard {
+		left: 150%;
+		transform: translateX(-150%);
+		opacity: 0;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.prevCard {
+		left: -50%;
+		opacity: 100;
+	}
+	
+	.leftCard {
+		left: 0%;
+		opacity: 100;
+	}
+	
+	.centreCard {
+		left: 50%;
+		transform: translateX(-50%);
+		
+	}
+	
+	.rightCard {
+		left: 100%;
+		transform: translateX(-100%);
+		opacity: 100;
+	}
+	
+	.nextCard {
+		left: 150%;
+		transform: translateX(-150%);
+		opacity: 100;
+	}
+}
+
+@media screen and (min-width: 1536px) {
+	.prevCard {
+		left: -50%;
+		opacity: 100;
+	}
+	
+	.leftCard {
+		left: 10%;
+		opacity: 100;
+	}
+	
+	.centreCard {
+		left: 50%;
+		transform: translateX(-50%);
+		
+	}
+	
+	.rightCard {
+		left: 87%;
+		transform: translateX(-87%);
+		opacity: 100;
+	}
+	
+	.nextCard {
+		left: 150%;
+		transform: translateX(-150%);
+		opacity: 100;
+	}
+}

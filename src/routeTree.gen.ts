@@ -18,6 +18,7 @@ import { Route as RootNyhederRouteImport } from './routes/_root/nyheder'
 import { Route as RootOmosRouteImport } from './routes/_root/omos'
 import { Route as RootServicesRouteImport } from './routes/_root/services'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AdminLoginRouteImport } from './routes/admin/login'
 
 const RootRouteRoute = RootRouteRouteImport.update({
   id: '/_root',
@@ -63,6 +64,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof RootIndexRoute
@@ -72,6 +78,7 @@ export interface FileRoutesByFullPath {
   '/nyheder': typeof RootNyhederRoute
   '/omos': typeof RootOmosRoute
   '/services': typeof RootServicesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/admin/': typeof AdminIndexRoute
 }
 export interface FileRoutesByTo {
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/nyheder': typeof RootNyhederRoute
   '/omos': typeof RootOmosRoute
   '/services': typeof RootServicesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/': typeof RootIndexRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/_root/nyheder': typeof RootNyhederRoute
   '/_root/omos': typeof RootOmosRoute
   '/_root/services': typeof RootServicesRoute
+  '/admin/login': typeof AdminLoginRoute
   '/_root/': typeof RootIndexRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -105,9 +114,18 @@ export interface FileRouteTypes {
     | '/nyheder'
     | '/omos'
     | '/services'
+    | '/admin/login'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/faq' | '/kontakt' | '/nyheder' | '/omos' | '/services' | '/' | '/admin'
+  to:
+    | '/faq'
+    | '/kontakt'
+    | '/nyheder'
+    | '/omos'
+    | '/services'
+    | '/admin/login'
+    | '/'
+    | '/admin'
   id:
     | '__root__'
     | '/_root'
@@ -117,6 +135,7 @@ export interface FileRouteTypes {
     | '/_root/nyheder'
     | '/_root/omos'
     | '/_root/services'
+    | '/admin/login'
     | '/_root/'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -191,6 +210,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
   }
 }
 
@@ -217,10 +243,12 @@ const RootRouteRouteWithChildren = RootRouteRoute._addFileChildren(
 )
 
 interface AdminRouteRouteChildren {
+  AdminLoginRoute: typeof AdminLoginRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminLoginRoute: AdminLoginRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
